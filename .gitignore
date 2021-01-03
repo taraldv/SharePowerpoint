@@ -71,3 +71,8 @@ Thumbs.db
 *.dll
 *.exe
 
+*.class
+SharePowerpoint-Host/dist/README.TXT
+*.xml
+*.properties
+*.mf
