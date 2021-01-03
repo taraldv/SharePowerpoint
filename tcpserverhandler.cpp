@@ -6,13 +6,13 @@ TcpServerHandler::TcpServerHandler(QObject *parent) : QObject(parent)
     connect(mTcpServer, &QTcpServer::newConnection, this, &TcpServerHandler::acceptTcpConnection);
     int port = 3322;
     mTcpServer->listen(QHostAddress::Any, port);
-    qDebug() << "TCP Listening on port:" << port;
+    //qDebug() << "TCP Listening on port:" << port;
 }
 
 void TcpServerHandler::acceptTcpConnection(){
     QTcpSocket* socket = mTcpServer->nextPendingConnection();
     if (!socket){
-        qDebug() << "Error: got invalid pending connection!";
+        //qDebug() << "Error: got invalid pending connection!";
     }
 
     connect(socket, &QIODevice::readyRead, this, &TcpServerHandler::readTcpPacket);
@@ -29,6 +29,8 @@ void TcpServerHandler::readTcpPacket(){
     int messageCode = data[0];
     if(messageCode == 0){
         javaClient = readSocket;
+        //Am unable to check if javaClient == nullptr
+       // qDebug() << "Assigned javaclient";
     } else {
         parseRequest(data);
         readSocket->close();
@@ -59,7 +61,7 @@ void TcpServerHandler::parseRequest(QByteArray data){
 
 void TcpServerHandler::sendKey(QString keyString){
     int equalsIndex = keyString.indexOf("=");
-    qDebug() << equalsIndex;
+    //qDebug() << equalsIndex;
     QString key = keyString.right(keyString.length()-equalsIndex-1);
     QByteArray output;
     output.append(key.length());
