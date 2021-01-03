@@ -1,4 +1,4 @@
-## SharePowerpoint
+## SharePowerPoint
 Software to allow multiple clients send key actions to a single host, with the intent of letting them control the PowerPoint presentation<br>
 Consists of several parts:
 <ul>
