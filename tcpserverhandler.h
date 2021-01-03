@@ -12,7 +12,7 @@ public:
     TcpServerHandler(QObject *parent = nullptr);
 private:
     QTcpServer* mTcpServer;
-    QTcpSocket* javaClient;
+    QTcpSocket* javaClient = nullptr;
     void acceptTcpConnection();
     void readTcpPacket();
     void parseRequest(QByteArray data);
