@@ -62,6 +62,7 @@ void TcpServerHandler::sendKey(QString keyString){
     qDebug() << equalsIndex;
     QString key = keyString.right(keyString.length()-equalsIndex-1);
     QByteArray output;
+    output.append(key.length());
     output.append(key);
     if(javaClient){
         javaClient->write(output);
